@@ -8,7 +8,7 @@ CHOICES = (
 
 
 class Example(Job):
-    template_name = "my_template.html"
+    template_name = "/opt/nautobot/git/adhoc_jobs/jobs/my_template.html"
     var1 = ChoiceVar(choices=CHOICES, default="-")
     var2 = StringVar()
     var3 = StringVar()
