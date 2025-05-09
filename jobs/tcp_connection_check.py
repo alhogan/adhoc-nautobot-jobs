@@ -2,6 +2,7 @@ from nautobot.apps.jobs import IntegerVar, Job, StringVar
 from nautobot.core.celery import register_jobs
 from netutils.ping import tcp_ping
 
+
 class ConnectivityCheckTask(Job):  # pylint: disable=too-many-instance-attributes
     """Nautobot Job for onboarding a new device."""
 
@@ -22,8 +23,9 @@ class ConnectivityCheckTask(Job):  # pylint: disable=too-many-instance-attribute
         ip_addresses = kwargs["ip_addresses"].replace(" ", "").split(",")
         for ipaddr in ip_addresses:
             reach_check = tcp_ping(ipaddr, kwargs["port"])
-            self.logger.info("Reachability check to %s:%s boolean result: %s", ipaddr, kwargs["port"], reach_check)
-
-jobs = [ConnectivityCheckTask]
-
-register_jobs(*jobs)
+            self.logger.info(
+                "Reachability check to %s:%s boolean result: %s",
+                ipaddr,
+                kwargs["port"],
+                reach_check,
+            )

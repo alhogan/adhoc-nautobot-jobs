@@ -1,0 +1,42 @@
+{% extends 'extras/job.html' %}
+
+{% block extra_styles %}
+    {{ block.super }}
+    <!-- Add additional CSS here. -->
+{% endblock %}
+{% block content %}
+    {{ block.super }}
+    <!-- Add additional HTML here. -->
+{% endblock content %}
+{% block javascript %}
+    {{ block.super }}
+    <!-- Add additional JavaScript here. -->
+<script>
+
+function toggleFields(value) {
+    const var2Group = document.querySelector("div.form-group label[for='id_var2']").closest(".form-group");
+    const var3Group = document.querySelector("div.form-group label[for='id_var3']").closest(".form-group");
+
+    if (value === "n") {
+        var2Group.style.display = "none";
+        var3Group.style.display = "block";
+    } else if (value === "s") {
+        var3Group.style.display = "none";
+        var2Group.style.display = "block";
+    } else {
+        var2Group.style.display = "none";
+        var3Group.style.display = "none";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const var1Element = document.getElementById("id_var1");
+    toggleFields(this.value);
+    var1Element.addEventListener("change", function () {
+        toggleFields(this.value);
+    });
+});
+
+</script>
+
+{% endblock javascript %}

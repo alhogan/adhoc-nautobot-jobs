@@ -1,4 +1,5 @@
 """Jobs for nautobot-plugin-nornir debugging."""
+
 from datetime import datetime
 
 from nautobot.core.celery import register_jobs
@@ -54,12 +55,10 @@ class DebugInventoryJob(Job, FormEntry):
                     "#### Default Data\n%s",
                     nornir_obj.inventory.defaults.data,
                 )
-                self.logger.info("Total In Scope Devices: %s", len(nornir_obj.inventory.hosts.items()))
+                self.logger.info(
+                    "Total In Scope Devices: %s",
+                    len(nornir_obj.inventory.hosts.items()),
+                )
         except Exception as err:
             self.logger.info("%s", err)
             raise
-
-
-jobs = [DebugInventoryJob]
-
-register_jobs(*jobs)
