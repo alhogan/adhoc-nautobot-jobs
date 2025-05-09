@@ -19,8 +19,3 @@ class Example(Job):
     def run(self):
         """Executes the Job."""
         pass
-
-
-jobs = [Example]
-
-register_jobs(*jobs)
