@@ -1,4 +1,4 @@
-from nautobot.apps.jobs import Job, StringVar, ChoiceVar, register_jobs
+from nautobot.apps.jobs import Job, StringVar, ChoiceVar
 
 CHOICES = (
     ("-", "----"),
